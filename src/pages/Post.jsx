@@ -1,17 +1,23 @@
 import { useEffect, useState } from "react";
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
+
+import {
+    useParams,
+    Link
+  } from "react-router-dom";
+
 import { Layout } from "../components/Layout";
 import { client } from "../lib/createClient";
 
-const POST_SLUG = "post-novo-no-ar";
-
 export const Post = () => {
+    const { slug } = useParams();
+
     const [post, setPost] = useState(null);
 
     useEffect(() => {
         client
             .getEntries({
-                "fields.postSlug": POST_SLUG,
+                "fields.postSlug": slug,
                 content_type: 'blogPostAula',
             })
             .then(function (entries) {
@@ -32,9 +38,9 @@ export const Post = () => {
                             <div dangerouslySetInnerHTML={{__html: documentToHtmlString(post.fields.postBody)}}></div>
 
                             <div className="mt-1">
-                                <a href="#" className="btn btn-primary">
+                                <Link to="/" className="btn btn-primary">
                                     Voltar para Home
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </div> 
