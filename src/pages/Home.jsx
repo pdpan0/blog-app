@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { Layout } from "../components/Layout"
 import { client } from "../lib/createClient";
 import { Link } from "react-router-dom";
+import { CardList } from "../components/CardList";
 
 export const Home = () => {
     const [categories, setCategories] = useState([]); // retorna um array
@@ -13,7 +14,7 @@ export const Home = () => {
         // Pedir para o objeto client buscar os últimos 5 posts
         client
             .getEntries({
-                content_type: 'blogPostAula',
+                content_type: 'blogPosts',
                 limit: 5,
                 order: "-sys.createdAt"
             })
@@ -25,7 +26,7 @@ export const Home = () => {
         // Pedir para o objeto client buscar todas as categorias
         client
             .getEntries({
-                content_type: 'blogCategoryAula',
+                content_type: 'blogCategories',
             })
             .then(function (entries) {
                 console.log('categorias', entries.items);
@@ -39,20 +40,10 @@ export const Home = () => {
                 <div className="row">
                     <main className="col-md-8">
                         <h1 className="my-3">Últimos posts</h1>
-
-                        {posts.map(post => (
-                            <div className="card mb-3" key={post.sys.id}>
-                                <div className="card-body">
-                                    <h5 className="card-title">{post.fields.postTitle}</h5>
-                                    <p className="card-text">{post.fields.postDescription}</p>
-                                    <Link to={`/post/${post.fields.postSlug}`} className="card-link">
-                                        Ver post
-                                    </Link>
-                                </div>
-                            </div>
-                        ))}
-                        
-                        <a href="#" className='btn btn-primary'>Ver todos os posts</a>
+                        <CardList posts={posts} />
+                        <Link to="/posts" className="btn btn-primary">
+                            Ver todos os posts
+                        </Link>
                     </main>
                 
                     <aside className="col-md-4">
