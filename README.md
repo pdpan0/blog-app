@@ -1,6 +1,6 @@
     <p align="center">
-    <a href="" rel="noopener">
-    <img width=200px height=200px src="./public/vite.svg" alt="Project logo"></a>
+        <a href="" rel="noopener">
+      <img width=200px height=200px src="./public/vite.svg" alt="Project logo"></a>
     </p>
 
     <h3 align="center">Blog App</h3>
