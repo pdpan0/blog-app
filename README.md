@@ -39,16 +39,16 @@ We will need vite to create and run the application after it is cloned. To do th
 
 ```bash
 # npm 7+, extra double-dash is needed:
-npm create vite@latest my-vue-app -- --template vue
+npm create vite@latest my-vue-app -- --template react
 
 # yarn
-yarn create vite my-vue-app --template vue
+yarn create vite my-vue-app --template react
 
 # pnpm
-pnpm create vite my-vue-app --template vue
+pnpm create vite my-vue-app --template react
 
 # bun
-bun create vite my-vue-app --template vue
+bun create vite my-vue-app --template react
 ```
 
 >If you have any questions, the vite documentation can be accessed [here](https://vitejs.dev/guide/).
