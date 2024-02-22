@@ -7,7 +7,7 @@ export const PostList = () => {
 
     const [posts, setPosts] = useState([]);
     const [skip, setSkip] = useState(0); // configura a posição da "página"
-    const [limit, setLimit] = useState(1); // configura o limite por "página"
+    const [limit, setLimit] = useState(5); // configura o limite por "página"
     const [totalPosts, setPostsItems] = useState(0); // armazena o número total de posts
 
     useEffect(() => {
@@ -26,7 +26,7 @@ export const PostList = () => {
 
     function hasSeeMore() {
         return totalPosts != posts.length
-            ? <button className="btn btn-primary" onClick={() => setSkip(skip + 1)}>Ver mais</button>
+            ? <button className="btn btn-primary" onClick={() => setSkip(skip + limit)}>Ver mais</button>
             : null
     }
 
