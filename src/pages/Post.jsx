@@ -21,7 +21,6 @@ export const Post = () => {
                 content_type: 'blogPosts',
             })
             .then(function (entries) {
-                console.log("post", entries);
                 setPost(entries.items[0] || null);
             });
     }, []);
